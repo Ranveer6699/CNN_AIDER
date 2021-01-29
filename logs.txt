@@ -1,0 +1,126 @@
+Since, it takes about 10-15 minutes for a single run, we are rate limited on what parameters we can realistically tune.
+
+For the model, we are going to fix the number of epochs to 10 as it is the minimum epoch where we can expect to be near convergence.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+We are going to be testing our model using two optimizers, RMSPROP and Adam.
+1) For the RMSPROP Optimizer, we would be tuning the learning rate lr as well as rho. We would keep   
+   other parameters constant (at default values)
+2) For the Adam Optimizer, we would be tuning the learning rate and the beta_1 parameter, keeping all the other parameters constant (at default values)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Tuning Results
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+------------------------------------------------------------------------------------------------------
+Using RMSPROP (momentum=0.0, epsilon=1e-7, epochs=10)
+------------------------------------------------------------------------------------------------------
+lr = 0.001, rho = 0.9, 
+ train_loss=0.5306, train_categorical_accuracy=0.8671, 
+ test_loss=0.6446, test_categorical_accuracy=0.8297
+
+lr = 0.005, rho = 0.9, 
+ train_loss=0.5234, train_categorical_accuracy=0.8544,
+ test_loss=0.8696, test_categorical_accuracy=0.7862
+
+lr = 0.01, rho = 0.9, 
+ train_loss=0.8683, train_categorical_accuracy=0.6805, 
+ test_loss=0.6059, test_categorical_accuracy=0.7536
+
+lr = 0.05, rho=0.9, 
+ train_loss=1.6110, train_categorical_accuracy=0.2281, 
+ test_loss=1.6112, test_categorical_accuracy=0.1920
+
+lr = 0.001, rho = 0.8, 
+ train_loss=0.5644, train_categorical_accuracy=0.8662, 
+ test_loss=0.6649, test_categorical_accuracy=0.8224
+
+lr = 0.005, rho = 0.8, 
+ train_loss=0.4702, train_categorical_accuracy=0.8657, 
+ test_loss=0.6678, test_categorical_accuracy=0.8260
+
+lr = 0.01, rho = 0.8, 
+ train_loss=0.5798, train_categorical_accuracy=0.8473, 
+ test_loss=0.5873, test_categorical_accuracy=0.8478
+
+lr = 0.05, rho=0.8, 
+ train_loss=1.2054, train_categorical_accuracy=0.4599, 
+ test_loss=1.0735, test_categorical_accuracy=0.4963
+
+lr = 0.001, rho = 0.7, 
+ train_loss=1.1815, train_categorical_accuracy=0.4717, 
+ test_loss=1.0741, test_categorical_accuracy=0.4601
+
+lr = 0.005, rho = 0.7, 
+ train_loss=1.0647, train_categorical_accuracy=0.5250, 
+ test_loss=1.0052, test_categorical_accuracy=0.5109
+
+lr = 0.01, rho = 0.7, 
+ train_loss=1.0983, train_categorical_accuracy=0.5217, 
+ test_loss=0.9862, test_categorical_accuracy=0.5543
+
+lr = 0.05, rho=0.7, 
+ train_loss=1.1489, train_categorical_accuracy=0.4995, 
+ test_loss=0.9408, test_categorical_accuracy=0.5652
+
+------------------------------------------------------------------------------------------------------
+Using the Adam Optimizer(beta_2 = 0.999, epsilon=1e-7, epochs=10)
+------------------------------------------------------------------------------------------------------
+learning_rate=0.001, beta_1=0.9,
+ train_loss=0.4816, train_categorical_accuracy=0.8680, 
+ test_loss=0.6666, test_categorical_accuracy=0.8152
+
+learning_rate=0.005, beta_1=0.9,
+ train_loss=0.4806, train_categorical_accuracy=0.8713,
+ test_loss=0.5656, test_categorical_accuracy=0.8659
+
+learning_rate=0.01, beta_1=0.9,
+ train_loss=0.6170, train_categorical_accuracy=0.8355, 
+ test_loss=0.5833, test_categorical_accuracy=0.8659
+
+learning_rate=0.05, beta_1=0.9,
+ train_loss=1.3160, train_categorical_accuracy=0.4133, 
+ test_loss=1.3250, test_categorical_accuracy=0.4456
+
+learning_rate=0.001, beta_1=0.8,
+ train_loss=0.4930, train_categorical_accuracy=0.8612, 
+ test_loss=0.6743, test_categorical_accuracy=0.8007
+
+learning_rate=0.005, beta_1=0.8,
+ train_loss=0.4813, train_categorical_accuracy=0.8737, 
+ test_loss=0.7523, test_categorical_accuracy=0.7935
+
+learning_rate=0.01, beta_1=0.8,
+ train_loss=0.8339, train_categorical_accuracy=0.6918, 
+ test_loss=0.7789, test_categorical_accuracy=0.7500
+
+learning_rate=0.05, beta_1=0.8, train_loss=1.4919,
+ train_categorical_accuracy=0.3153, 
+ test_loss=1.2695, test_categorical_accuracy=0.4166
+
+learning_rate=0.001, beta_1=0.7,
+ train_loss=0.4847, train_categorical_accuracy=0.8610, 
+ test_loss=0.6632, test_categorical_accuracy=0.8333
+
+learning_rate=0.005, beta_1=0.7,
+ train_loss=0.5654, train_categorical_accuracy=0.8478, 
+ test_loss=0.8022, test_categorical_accuracy=0.7934
+
+learning_rate=0.01, beta_1=0.7,
+ train_loss=0.7031, train_categorical_accuracy=0.8124, 
+ test_loss=0.6243, test_categorical_accuracy=0.8333
+
+learning_rate=0.05, beta_1=0.7,
+ train_loss=1.5256, train_categorical_accuracy=0.2747, 
+ test_loss=1.5965, test_categorical_accuracy=0.2029
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+BEST MODEL (Based on train_categorical_accuracy)
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Adam Optimizer, learning_rate=0.005, beta_1 = 0.9
+train_loss=0.4806
+train_categorical_accuracy=0.8713
+test_loss=0.5656
+test_categorical_accuracy=0.8659
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
